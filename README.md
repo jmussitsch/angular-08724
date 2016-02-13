@@ -14,7 +14,7 @@ You can get them from [http://nodejs.org/](http://nodejs.org/).
 
 ### Clone angular-08724
 
-Clone the angular-08724 repository using [http://git-scm.com/](git):
+Clone the angular-08724 repository using [git](http://git-scm.com/):
 
 ```
 git clone https://github.com/jmussitsch/angular-08724.git
