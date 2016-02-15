@@ -1,0 +1,16 @@
+{
+  "name": "angular-08724",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Angular application for 08724 - Client-Side Web Technologies",
+  "repository": "https://github.com/jmussitsch/angular-08724",
+  "devDependencies": {
+    "bower": "^1.3.1",
+    "http-server": "^0.6.1"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+    "prestart": "npm install",
+    "start": "http-server -a localhost -p 8000 -c-1"
+  }
+}

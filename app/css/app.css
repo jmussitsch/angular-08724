@@ -1,0 +1,18 @@
+body {
+    padding: 2em;
+}
+
+/*
+The ngCloak directive is used to prevent the Angular html template
+from being briefly displayed by the browser in its raw (uncompiled)
+form while your application is loading. Use this directive to
+avoid the undesirable flicker effect caused by the html template display.
+
+See https://docs.angularjs.org/api/ng/directive/ngCloak to read about ngCloak.
+
+ngCloak works in cooperation with the following css rule.
+*/
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+

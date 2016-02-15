@@ -1,0 +1,72 @@
+<!doctype html>
+<!--
+    Directives are fundamental to Angular and are markers on a DOM element that tell AngularJS's HTML
+    compiler to attach a specified behavior to that DOM element (e.g. via event listeners),
+    or even to transform the DOM element and its children. Read about them here:
+
+    https://docs.angularjs.org/guide/directive
+
+    There are many directives built in to Angular. These are prefixed with "ng". In HTML the directives names are
+    dash-delimited nut are in camelCase elsewhere. So the ngApp directive below is used in HTML as ng-app.
+
+    The ngApp directive is used to auto-bootstrap an AngularJS application. The ngApp directive designates
+    the root element of the application and is typically placed near the root
+    element of the page - e.g. on the <body> or <html> tags. Read about it here:
+
+    https://docs.angularjs.org/api/ng/directive/ngApp
+
+    There are 3 important things that happen during the app bootstrap:
+    - The injector that will be used for dependency injection is created.
+    - The injector will then create the root scope that will become the context for the model of our application.
+    - Angular will then "compile" the DOM starting at the ngApp root element, processing any directives and bindings found along the way.
+-->
+<html lang="en" ng-app>
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Demo One</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+    <!--
+        Angular expressions are JavaScript-like code snippets. Read about them here:
+
+        https://docs.angularjs.org/guide/expression
+    -->
+    <div class="panel panel-default">
+        <div class="panel-heading">Expressions</div>
+        <div class="panel-body">
+            <span>7 + 3 = </span><span>{{ 7 + 3 }}</span><br>
+            <span>Length of string "hello world" is {{ "hello world".length }}</span><br>
+            <span>Name is {{ user.name || "unknown" }}</span><br>
+            <span>Age range is {{ user.ageRange || "unknown" }}</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Name
+            <!--
+              The ng-model directive allows us to perform two-way data binding which
+              is one of the ket features of Angular:
+
+              https://docs.angularjs.org/api/ng/directive/ngModel
+            -->
+            <input ng-model="user.name" type="text" class="form-control" placeholder="Enter name">
+        </label>
+    </div>
+    <div class="form-group">
+        <label>Age Range
+            <select ng-model="user.ageRange" class="form-control">
+                <option value=""></option>
+                <option value="Under 18">Under 18</option>
+                <option value="18 to 25">18 to 25</option>
+                <option value="26 to 40">26 to 40</option>
+                <option value="Over 40">Over 40</option>
+            </select>
+        </label>
+    </div>
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+</body>
+</html>

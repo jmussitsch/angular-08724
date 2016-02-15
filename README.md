@@ -1,5 +1,17 @@
 # angular-08724
 
+## Overview
+
+The AngularJS website is a great resource to obtain information about
+AngularJS: [https://angularjs.org/](https://angularjs.org/).
+
+[Tutorial](https://docs.angularjs.org/tutorial)
+[Developer Guide](https://docs.angularjs.org/guide)
+[API Reference](https://docs.angularjs.org/api)
+
+The demo files in this repository reference documentation on the
+AngularJS website extensively.
+
 ## Getting Started
 
 To get you started you can simply clone the angular-08724 repository and install the dependencies:
@@ -46,3 +58,10 @@ npm start
 ```
 
 Now browse to the app at `http://localhost:8000/app/index.html`.
+
+### Developer Tools
+
+There are some Angular-specific developer extensions for Chromw:
+
+[ng-inspector](http://ng-inspector.org/)
+[Batarang](https://chrome.google.com/webstore/detail/ighdmehidhipcmcojjgiloacoafjmpfk)

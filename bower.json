@@ -1,0 +1,11 @@
+{
+  "name": "angular-08724",
+  "description": "Angular application for 08724 - Client-Side Web Technologies",
+  "homepage": "https://github.com/jmussitsch/angular-08724",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-route": "~1.5.0",
+    "bootstrap": "~3.3.0"
+  }
+}
