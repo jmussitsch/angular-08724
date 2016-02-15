@@ -61,7 +61,7 @@ Now browse to the app at `http://localhost:8000/app/index.html`.
 
 ### Developer Tools
 
-There are some Angular-specific developer extensions for Chromw:
+There are some Angular-specific developer extensions for Chrome:
 
 * [ng-inspector](http://ng-inspector.org/)
 * [Batarang](https://chrome.google.com/webstore/detail/ighdmehidhipcmcojjgiloacoafjmpfk)
