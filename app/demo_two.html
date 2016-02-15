@@ -1,0 +1,120 @@
+<!doctype html>
+<!--
+    Here I have given the ng-app directive a value of "myApp".
+    I will use the same name when creating my application's
+    module in js/app.js;
+-->
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Demo Two</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+    <!--
+        In Angular, controllers are used to augment scope. Use controllers
+        to set up initial state and add behaviors ot scope. We attach controllers
+        to the DOM using the ng-controller directive.
+
+        See: https://docs.angularjs.org/guide/controller
+
+        Also using ng-submit to handle the submit button click.
+
+        See: https://docs.angularjs.org/api/ng/directive/ngSubmit
+    -->
+    <form class="form-horizontal" ng-controller="userController" ng-submit="submit()">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">First Name</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" required placeholder="First Name" ng-model="address.firstName">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Last Name</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" required placeholder="Last Name" ng-model="address.lastName">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Address 1</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" required placeholder="Address 1" ng-model="address.addressOne">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Address 2</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" placeholder="Address 2" ng-model="address.addressTwo">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">City</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" required placeholder="City" ng-model="address.city">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">State</label>
+            <div class="col-sm-4">
+                <!--
+                    The select element will get its options populated from the
+                    stateOptions object on the scope variable.
+
+                    See: https://docs.angularjs.org/api/ng/directive/select
+                    See: https://docs.angularjs.org/api/ng/directive/ngOptions
+                -->
+                <select ng-model="address.state" required class="form-control" ng-options="name as value for (name, value) in stateOptions">
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Zip Code</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" required placeholder="Zip Code" ng-model="address.zip">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </div>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Address 1</th>
+                    <th>Address 2</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--
+                    We can iterate over a collection in scope and instantiate a template for each item.
+
+                    See: https://docs.angularjs.org/api/ng/directive/ngRepeat
+                -->
+                <tr ng-cloak ng-repeat="address in submittedAddresses">
+                    <td>{{ address.firstName }}</td>
+                    <td>{{ address.lastName }}</td>
+                    <td>{{ address.addressOne }}</td>
+                    <td>{{ address.addressTwo }}</td>
+                    <td>{{ address.city }}</td>
+                    <td>{{ address.state }}</td>
+                    <td>{{ address.zip }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
