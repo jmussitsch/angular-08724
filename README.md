@@ -5,9 +5,9 @@
 The AngularJS website is a great resource to obtain information about
 AngularJS: [https://angularjs.org/](https://angularjs.org/).
 
-[Tutorial](https://docs.angularjs.org/tutorial)
-[Developer Guide](https://docs.angularjs.org/guide)
-[API Reference](https://docs.angularjs.org/api)
+* [Tutorial](https://docs.angularjs.org/tutorial)
+* [Developer Guide](https://docs.angularjs.org/guide)
+* [API Reference](https://docs.angularjs.org/api)
 
 The demo files in this repository reference documentation on the
 AngularJS website extensively.
@@ -63,5 +63,5 @@ Now browse to the app at `http://localhost:8000/app/index.html`.
 
 There are some Angular-specific developer extensions for Chromw:
 
-[ng-inspector](http://ng-inspector.org/)
-[Batarang](https://chrome.google.com/webstore/detail/ighdmehidhipcmcojjgiloacoafjmpfk)
+* [ng-inspector](http://ng-inspector.org/)
+* [Batarang](https://chrome.google.com/webstore/detail/ighdmehidhipcmcojjgiloacoafjmpfk)
