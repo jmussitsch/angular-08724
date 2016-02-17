@@ -27,99 +27,113 @@
         See: https://docs.angularjs.org/api/ng/directive/ngSubmit
     -->
     <form class="form-horizontal" ng-controller="userController" ng-submit="submit()">
-        <div class="form-group">
-            <label class="col-sm-2 control-label">First Name</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" required placeholder="First Name" ng-model="address.firstName">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Enter Address Information</h3>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Last Name</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" required placeholder="Last Name" ng-model="address.lastName">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Address 1</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" required placeholder="Address 1" ng-model="address.addressOne">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Address 2</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" placeholder="Address 2" ng-model="address.addressTwo">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">City</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" required placeholder="City" ng-model="address.city">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">State</label>
-            <div class="col-sm-4">
-                <!--
-                    The select element will get its options populated from the
-                    stateOptions object on the scope variable.
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">First Name</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" required placeholder="First Name" ng-model="address.firstName">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Last Name</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" required placeholder="Last Name" ng-model="address.lastName">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Address 1</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" required placeholder="Address 1" ng-model="address.addressOne">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Address 2</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" placeholder="Address 2" ng-model="address.addressTwo">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">City</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" required placeholder="City" ng-model="address.city">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">State</label>
+                    <div class="col-sm-4">
+                        <!--
+                            The select element will get its options populated from the
+                            stateOptions object on the scope variable.
 
-                    See: https://docs.angularjs.org/api/ng/directive/select
-                    See: https://docs.angularjs.org/api/ng/directive/ngOptions
-                -->
-                <select ng-model="address.state" required class="form-control" ng-options="name as value for (name, value) in stateOptions">
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Zip Code</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" required placeholder="Zip Code" ng-model="address.zip">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Submit</button>
+                            See: https://docs.angularjs.org/api/ng/directive/select
+                            See: https://docs.angularjs.org/api/ng/directive/ngOptions
+                        -->
+                        <select ng-model="address.state" required class="form-control" ng-options="name as value for (name, value) in stateOptions">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Zip Code</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" required placeholder="Zip Code" ng-model="address.zip">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <table id="addressTable" class="table table-hover">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Address 1</th>
-                    <th>Address 2</th>
-                    <th>City</th>
-                    <th>State</th>
-                    <th>Zip Code</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!--
-                    We can iterate over a collection in scope and instantiate a template for each item. Because
-                    nested scopes prototypically inherit from parent scopes, we can access parent scope variables.
-                    Notice how I access the stateOptions variable that lives on the controller scope.
+        <div class="panel panel-success" ng-cloak ng-show="submittedAddresses.length > 0">
+            <div class="panel-heading">
+                <h3 class="panel-title">Addresses</h3>
+            </div>
+            <div class="panel-body">
+                <table id="addressTable" class="table table-hover table-bordered">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Address 1</th>
+                        <th>Address 2</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Zip Code</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--
+                        We can iterate over a collection in scope and instantiate a template for each item. Because
+                        nested scopes prototypically inherit from parent scopes, we can access parent scope variables.
+                        Notice how I access the stateOptions variable that lives on the controller scope.
 
-                    See: https://docs.angularjs.org/api/ng/directive/ngRepeat
-                -->
-                <tr ng-cloak ng-repeat="address in submittedAddresses">
-                    <td>
+                        See: https://docs.angularjs.org/api/ng/directive/ngRepeat
+                    -->
+                    <tr ng-repeat="address in submittedAddresses">
+                        <td>
                         <span class="btn btn-lg" ng-click="removeAddress($index)">
                             <span class="glyphicon glyphicon-remove-sign"></span>
                         </span>
-                    </td>
-                    <td>{{ address.firstName }}</td>
-                    <td>{{ address.lastName }}</td>
-                    <td>{{ address.addressOne }}</td>
-                    <td>{{ address.addressTwo }}</td>
-                    <td>{{ address.city }}</td>
-                    <td><span title="{{ stateOptions[address.state] }}">{{ address.state }}</span></td>
-                    <td>{{ address.zip }}</td>
-                </tr>
-            </tbody>
-        </table>
+                        </td>
+                        <td>{{ address.firstName }}</td>
+                        <td>{{ address.lastName }}</td>
+                        <td>{{ address.addressOne }}</td>
+                        <td>{{ address.addressTwo }}</td>
+                        <td>{{ address.city }}</td>
+                        <td><span title="{{ stateOptions[address.state] }}">{{ address.state }}</span></td>
+                        <td>{{ address.zip }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </form>
 
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>

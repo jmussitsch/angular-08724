@@ -28,17 +28,17 @@
      * Create the controller for the form referenced by the ng-controller directive.
      * Dependency injection is used to inject the scope dependency into the controller.
      * Controllers implicitly create new scope and the $scope is a special object referring to it.
-     * I am also injecting $rootScope to demonstrate how scopes inherit.
+     * I am also injecting $rootScope to demonstrate how scopes inherit. Also injecting the $log service.
      *
      * See: https://docs.angularjs.org/guide/controller
      * See: https://docs.angularjs.org/guide/scope
      */
-    app.controller("userController", function($scope, $rootScope) {
+    app.controller("userController", function($scope, $rootScope, $log) {
         /*
          * Scopes in Angular prototypically inherit (remember that?) from their
          * parent scope. Every application has a single root scope, $rootScope.
          */
-        console.log("Object.getPrototypeOf($scope) === $rootScope? " + ( Object.getPrototypeOf($scope) === $rootScope ));
+        $log.log("Object.getPrototypeOf($scope) === $rootScope? " + ( Object.getPrototypeOf($scope) === $rootScope ));
 
         $scope.stateOptions = usStates; //Available via closure
         $scope.submittedAddresses = [];
