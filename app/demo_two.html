@@ -83,9 +83,10 @@
             </div>
         </div>
 
-        <table class="table table-hover">
+        <table id="addressTable" class="table table-hover">
             <thead>
                 <tr>
+                    <th></th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Address 1</th>
@@ -97,17 +98,24 @@
             </thead>
             <tbody>
                 <!--
-                    We can iterate over a collection in scope and instantiate a template for each item.
+                    We can iterate over a collection in scope and instantiate a template for each item. Because
+                    nested scopes prototypically inherit from parent scopes, we can access parent scope variables.
+                    Notice how I access the stateOptions variable that lives on the controller scope.
 
                     See: https://docs.angularjs.org/api/ng/directive/ngRepeat
                 -->
                 <tr ng-cloak ng-repeat="address in submittedAddresses">
+                    <td>
+                        <span class="btn btn-lg" ng-click="removeAddress($index)">
+                            <span class="glyphicon glyphicon-remove-sign"></span>
+                        </span>
+                    </td>
                     <td>{{ address.firstName }}</td>
                     <td>{{ address.lastName }}</td>
                     <td>{{ address.addressOne }}</td>
                     <td>{{ address.addressTwo }}</td>
                     <td>{{ address.city }}</td>
-                    <td>{{ address.state }}</td>
+                    <td><span title="{{ stateOptions[address.state] }}">{{ address.state }}</span></td>
                     <td>{{ address.zip }}</td>
                 </tr>
             </tbody>

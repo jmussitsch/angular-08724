@@ -16,3 +16,6 @@ ngCloak works in cooperation with the following css rule.
     display: none !important;
 }
 
+#addressTable td {
+    vertical-align: middle;
+}

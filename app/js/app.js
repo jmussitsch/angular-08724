@@ -59,5 +59,13 @@
              */
             $scope.address = null;
         };
+
+        /*
+         * Add a behavior to handle when the remove X is clicked
+         */
+        $scope.removeAddress = function(index) {
+            $scope.submittedAddresses.splice(index, 1);
+        };
+
     });
 })();
