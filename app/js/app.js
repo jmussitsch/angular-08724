@@ -68,4 +68,23 @@
         };
 
     });
+    app.constant('stocksUri', '//csw08724.appspot.com/example.ajax');
+    /*
+     * Injecting the $http service to provide AJAX functionality. Also
+     * injecting the constant defined above.
+     *
+     * See: https://docs.angularjs.org/api/ng/service/$http
+     */
+    app.controller("stocksController", function($scope, $http, stocksUri, $log) {
+        /*
+         * The $http service uses Promises underneath!
+         */
+        $http.get(stocksUri, {
+            responseType: "json"
+        }).then(function(response) {
+            $scope.stockData = response.data;
+        }, function(response) {
+            $log.error(response.statusText);
+        });
+    });
 })();
