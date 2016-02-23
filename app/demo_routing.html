@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en" ng-app="myRoutingApp">
 <head>
-    <base href="/app/">
     <meta charset="UTF-8">
     <title>Angular Routing Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,8 +17,13 @@
         </tr>
         </thead>
         <tbody ng-cloak>
+            <!--
+              Using ng-class to dynamically set CSS class.
+
+              https://docs.angularjs.org/api/ng/directive/ngClass
+            -->
             <tr ng-repeat="stock in stockData | orderBy:'company':true">
-                <td><a ng-href="Stock/{{stock.ticker}}">{{ stock.company }} {{ stock.ticker | stockTicker }}</a></td>
+                <td ng-class="{info: stock.ticker === selectedCompany.ticker}"><a style="cursor: pointer;" ng-click="showDetails(stock.ticker)">{{ stock.company }} {{ stock.ticker | stockTicker }}</a></td>
                 <!--
                     Using ng-if to conditionally render the second td.
 
@@ -29,7 +33,7 @@
 
                     https://docs.angularjs.org/api/ngRoute/directive/ngView
                 -->
-                <td ng-view ng-if="$first" rowspan="{{stockData.length}}">g</td>
+                <td ng-view ng-if="$first" rowspan="{{stockData.length}}"></td>
             </tr>
         </tbody>
     </table>

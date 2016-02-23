@@ -11,10 +11,34 @@
      */
     var app = angular.module('myRoutingApp', ['stocks', 'ngRoute']);
 
-    app.controller('stocksController', function($scope, stocksService) {
+    app.run(function($route) {
+        /*
+         * Workaround so that routes load correctly when a page is loaded with
+         * routes:
+         *
+         * https://github.com/angular/angular.js/issues/1213
+         */
+    });
+
+    app.controller('stocksController', function($scope, $location, stocksService) {
         stocksService.getStocksList().then(function(data){
            $scope.stockData = data;
         });
+
+        /*
+         * Make note of the currently selected ticker on this controller's scope so we
+         * can highlight the row in the table.
+         */
+        $scope.selectedCompany = {
+            ticker: ""
+        };
+
+        /*
+         * Create a behavior to handle showing comapny details.
+         */
+        $scope.showDetails = function(ticker) {
+            $location.path('/Stock/' + ticker);
+        };
     });
 
     /*
@@ -23,6 +47,7 @@
     app.controller('stockDetailsController', function($scope, $routeParams, stocksService) {
         stocksService.getStockDetails($routeParams.ticker).then(function(stockDetails) {
             $scope.stockDetails = stockDetails;
+            $scope.selectedCompany.ticker = stockDetails.ticker;
         });
     });
 
@@ -37,7 +62,13 @@
             templateUrl: 'templates/stockDetailsTemplate.html',
             controller: 'stockDetailsController'
         });
-        $locationProvider.html5Mode(true);
+        /*
+         * You can read about the location prvider here:
+         *
+         * https://docs.angularjs.org/guide/$location
+         */
+        $locationProvider.html5Mode(false);
+        $locationProvider.hashPrefix('!');
     });
 
 })();
