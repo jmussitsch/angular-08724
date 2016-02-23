@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en" ng-app="myRoutingApp">
 <head>
+    <base href="/app/">
     <meta charset="UTF-8">
     <title>Angular Routing Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,15 +13,27 @@
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
-            <th>Company</th>
+            <th>Companies</th>
+            <th>Details</th>
         </tr>
         </thead>
         <tbody ng-cloak>
             <tr ng-repeat="stock in stockData | orderBy:'company':true">
-                <td>{{ stock.company }}</td>
+                <td><a ng-href="Stock/{{stock.ticker}}">{{ stock.company }} {{ stock.ticker | stockTicker }}</a></td>
+                <!--
+                    Using ng-if to conditionally render the second td.
+
+                    https://docs.angularjs.org/api/ng/directive/ngIf
+
+                    Using the ng-view directive for routing templates.
+
+                    https://docs.angularjs.org/api/ngRoute/directive/ngView
+                -->
+                <td ng-view ng-if="$first" rowspan="{{stockData.length}}">g</td>
             </tr>
         </tbody>
     </table>
+
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
     <script type="text/javascript" src="js/modules/stocks.js"></script>

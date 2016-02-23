@@ -42,6 +42,7 @@
 
         $scope.stateOptions = usStates; //Available via closure
         $scope.submittedAddresses = [];
+        $scope.address = {};
 
         /*
          * Add a behavior to handle when Add is clicked.
@@ -57,7 +58,7 @@
             /*
              * Reset values on the model. Notice how the UI updates!
              */
-            $scope.address = null;
+            $scope.address = {};
         };
 
         /*
