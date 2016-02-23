@@ -77,7 +77,10 @@
      */
     app.controller("stocksController", function($scope, $http, stocksUri, $log) {
         /*
-         * The $http service uses Promises underneath!
+         * The $http service uses Promises underneath! Angular uses
+         * a slightly different implementation than the native ones:
+         *
+         * https://docs.angularjs.org/api/ng/service/$q
          */
         $http.get(stocksUri, {
             responseType: "json"
