@@ -6,7 +6,7 @@
      * be data in an external resource like a DB or something, but for simplicity
      * hard coding here.
      */
-    var usStates = {
+    const usStates = {
         AL: "ALABAMA",AK: "ALASKA",AS: "AMERICAN SAMOA",AZ: "ARIZONA",AR: "ARKANSAS",CA: "CALIFORNIA",CO: "COLORADO",
         CT: "CONNECTICUT",DE: "DELAWARE",DC: "DISTRICT OF COLUMBIA",FM: "FEDERATED STATES OF MICRONESIA",FL: "FLORIDA",
         GA: "GEORGIA",GU: "GUAM",HI: "HAWAII",ID: "IDAHO",IL: "ILLINOIS",IN: "INDIANA",IA: "IOWA",KS: "KANSAS",KY: "KENTUCKY",
@@ -22,7 +22,7 @@
      *
      * See https://docs.angularjs.org/api/ng/function/angular.module
      */
-    var app = angular.module('myApp', []);
+    let app = angular.module('myApp', []);
 
     /*
      * Create the controller for the form referenced by the ng-controller directive.
@@ -33,9 +33,9 @@
      * See: https://docs.angularjs.org/guide/controller
      * See: https://docs.angularjs.org/guide/scope
      */
-    app.controller("userController", function($scope, $rootScope, $log) {
+    app.controller("userController", ["$scope", "$rootScope", "$log", function($scope, $rootScope, $log) {
         /*
-         * Scopes in Angular prototypically inherit (remember that?) from their
+         * Scopes in Angular prototypically inherit from their
          * parent scope. Every application has a single root scope, $rootScope.
          */
         $log.log("Object.getPrototypeOf($scope) === $rootScope? " + ( Object.getPrototypeOf($scope) === $rootScope ));
@@ -68,7 +68,7 @@
             $scope.submittedAddresses.splice(index, 1);
         };
 
-    });
+    }]);
     app.constant('stocksUri', '//csw08724.appspot.com/example.ajax');
     /*
      * Injecting the $http service to provide AJAX functionality. Also

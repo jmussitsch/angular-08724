@@ -39,18 +39,13 @@ cd angular-08724
 npm install
 ```
 
-You should find that you have two new folders in your project.
+You should find that you have a new folder in your project.
 
-* `node_modules` - contains the npm packages for tools we need
-* `app/bower_components` - contains the angular framework files and a few other things
-
-*Note that the `bower_components` folder would normally be installed in the root folder but
-angular-08724 changes this location through the `.bowerrc` file.  Putting it in the app folder makes
-it easier to serve the files by a webserver.*
+* `node_modules` - contains the npm packages for tools we need as well as the angular framework files and a few other things
 
 ### Run the Application
 
-The project is preconfigured with a simple development web server.  To start
+The project is pre-configured with a simple development web server.  To start
 this server:
 
 ```
