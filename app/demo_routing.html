@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>Angular Routing Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.css">
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body ng-controller="stocksController">
@@ -22,7 +22,7 @@
 
               https://docs.angularjs.org/api/ng/directive/ngClass
             -->
-            <tr ng-repeat="stock in stockData | orderBy:'company':true">
+            <tr ng-repeat="stock in stockData | orderBy:'company'">
                 <td ng-class="{info: stock.ticker === selectedCompany.ticker}"><a style="cursor: pointer;" ng-click="showDetails(stock.ticker)">{{ stock.company }} {{ stock.ticker | stockTicker }}</a></td>
                 <!--
                     Using ng-if to conditionally render the second td.
@@ -38,8 +38,8 @@
         </tbody>
     </table>
 
-    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
-    <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="../node_modules/angular/angular.js"></script>
+    <script type="text/javascript" src="../node_modules/angular-route/angular-route.js"></script>
     <script type="text/javascript" src="js/modules/stocks.js"></script>
     <script type="text/javascript" src="js/myRoutingApp.js"></script>
 </body>

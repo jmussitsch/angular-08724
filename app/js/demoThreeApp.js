@@ -1,8 +1,16 @@
 (function() {
     "use strict";
 
-    let app = angular.module('myThirdPartyApp', ['chart.js']);
+    /*
+     * Here we create the module that is referenced by the ng-app directive.
+     *
+     * See https://docs.angularjs.org/api/ng/function/angular.module
+     */
+    let app = angular.module('myApp', []);
 
+    /*
+     * We can define constants to inject into other services, controllers, etc.
+     */
     app.constant('stocksUri', '//csw08724.appspot.com/example.ajax');
     /*
      * Injecting the $http service to provide AJAX functionality. Also
@@ -13,7 +21,8 @@
     app.controller("stocksController", ["$scope", "$http", "stocksUri", "$log", function($scope, $http, stocksUri, $log) {
         /*
          * The $http service uses Promises underneath! Angular uses
-         * a slightly different implementation than the native ones:
+         * a slightly different implementation than the native ones. We could use native ones
+         * but using Angular's instead:
          *
          * https://docs.angularjs.org/api/ng/service/$q
          */
@@ -21,22 +30,6 @@
             responseType: "json"
         }).then(function(response) {
             $scope.stockData = response.data;
-            /*
-             * Loop through data and determine industry breakdown.
-             */
-            let labelToCount = {};
-            $scope.data = [];
-            $scope.labels = [];
-            $scope.stockData.forEach(function(stock) {
-                if(!labelToCount.hasOwnProperty(stock.industry)) {
-                    $scope.labels.push(stock.industry);
-                    labelToCount[stock.industry] = 0;
-                }
-                labelToCount[stock.industry]++;
-            });
-            $scope.labels.forEach(function(label) {
-                $scope.data.push(labelToCount[label])
-            });
         }, function(response) {
             $log.error(response.statusText);
         });

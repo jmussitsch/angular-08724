@@ -9,18 +9,9 @@
      *
      * See https://docs.angularjs.org/api/ng/function/angular.module
      */
-    var app = angular.module('myRoutingApp', ['stocks', 'ngRoute']);
+    let app = angular.module('myRoutingApp', ['stocks', 'ngRoute']);
 
-    app.run(function($route) {
-        /*
-         * Workaround so that routes load correctly when a page is loaded with
-         * routes:
-         *
-         * https://github.com/angular/angular.js/issues/1213
-         */
-    });
-
-    app.controller('stocksController', function($scope, $location, stocksService) {
+    app.controller('stocksController', ["$scope", "$location", "stocksService", function($scope, $location, stocksService) {
         stocksService.getStocksList().then(function(data){
            $scope.stockData = data;
         });
@@ -34,22 +25,12 @@
         };
 
         /*
-         * Create a behavior to handle showing comapny details.
+         * Create a behavior to handle showing company details.
          */
         $scope.showDetails = function(ticker) {
             $location.path('/Stock/' + ticker);
         };
-    });
-
-    /*
-     * This controller will be associated with the routing view.
-     */
-    app.controller('stockDetailsController', function($scope, $routeParams, stocksService) {
-        stocksService.getStockDetails($routeParams.ticker).then(function(stockDetails) {
-            $scope.stockDetails = stockDetails;
-            $scope.selectedCompany.ticker = stockDetails.ticker;
-        });
-    });
+    }]);
 
     /*
      * Configure routing. See:
@@ -71,4 +52,13 @@
         $locationProvider.hashPrefix('!');
     });
 
+    /*
+     * This controller will be associated with the routing view.
+     */
+    app.controller('stockDetailsController', ["$scope", "$routeParams", "stocksService", function($scope, $routeParams, stocksService) {
+        stocksService.getStockDetails($routeParams.ticker).then(function(stockDetails) {
+            $scope.stockDetails = stockDetails;
+            $scope.selectedCompany.ticker = stockDetails.ticker;
+        });
+    }]);
 })();

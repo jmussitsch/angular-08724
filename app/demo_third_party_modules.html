@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <title>Angular Demo Three</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
-    <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.css">
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body ng-controller="stocksController">
@@ -21,12 +20,6 @@
         </tr>
         </thead>
         <tbody ng-cloak>
-        <!--
-            The following demonstrates the use
-            of filters.
-
-            See: https://docs.angularjs.org/api/ng/filter
-        -->
         <tr ng-repeat="stock in stockData | orderBy:'share_price':true">
             <td>{{ stock.company }}</td>
             <td>{{ stock.type }}</td>
@@ -42,9 +35,10 @@
         http://jtblin.github.io/angular-chart.js/
     -->
     <canvas class="chart chart-pie" chart-data="data" chart-labels="labels" chart-legend="true"></canvas>
-    <script type="text/javascript" src="bower_components/Chart.js/Chart.js"></script>
-    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
-    <script type="text/javascript" src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+
+    <script type="text/javascript" src="../node_modules/angular/angular.js"></script>
+    <script type="text/javascript" src="../node_modules/chart.js/dist/Chart.js"></script>
+    <script type="text/javascript" src="../node_modules/angular-chart.js/dist/angular-chart.js"></script>
     <script type="text/javascript" src="js/myThirdPartyApp.js"></script>
 </body>
 </html>

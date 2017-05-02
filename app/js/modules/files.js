@@ -3,7 +3,7 @@
 
     /*
      * What happens when we need to implement lower level functionality that
-     * is not provided by the framework? We should extend HTML and create a
+     * is not provided by the framework? We can extend HTML and create a
      * custom directive.
      *
      * https://docs.angularjs.org/guide/directive
@@ -19,8 +19,7 @@
                 /*
                  * The following creates something called isolate scope. This
                  * means that this directive will create its own scope
-                 * that does NOT prototypically inherit from its parent scope. This
-                 * is ideal when creating reusable components.
+                 * that does NOT prototypically inherit from its parent scope.
                  *
                  * The scope option is an object that contains a property for each isolate scope binding.
                  * In this case it has just one property:
@@ -44,7 +43,7 @@
                         /*
                          * Create a new file reader to read the file contents.
                          */
-                        var reader = new FileReader();
+                        let reader = new FileReader();
                         /*
                          * Event handler on the reader to handle completing
                          * of the file read.

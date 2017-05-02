@@ -15,19 +15,19 @@
      */
     angular.module('stocks', [])
         .constant('stocksUri', '//csw08724.appspot.com/example.ajax')
-        .service('stocksService', function StocksService($http, $window, $q, stocksUri) {
-            var stocks = null;
+        .service('stocksService', ["$http", "$window", "$q", "stocksUri", function StocksService($http, $window, $q, stocksUri) {
+            let stocks = null;
             /*
              * Create an object to use as a map data structure for fast look ups by ticker.
              */
-            var stocksMap = null;
+            let stocksMap = null;
             function getData() {
                 /*
                  * If data is already retrieved then no need to make AJAX call.
                  * Just create a new promise and return it since that is what caller expects.
                  */
                 if(stocks !== null) {
-                    var deferred = $q.defer();
+                    let deferred = $q.defer();
                     deferred.resolve(stocks);
                     return deferred.promise;
                 }
@@ -58,7 +58,7 @@
                    return stocksMap[ticker];
                 });
             };
-        })
+        }])
         .filter('stockTicker', function() {
            /*
             * Creating custom filters is really easy.
