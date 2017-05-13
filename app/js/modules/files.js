@@ -69,7 +69,7 @@
                              */
                             angular.element(domEvent.target).val('');
                         };
-                        reader.readAsDataURL(event.target.files[0]);
+                        reader.readAsDataURL(domEvent.target.files[0]);
                     });
                 }
             };
